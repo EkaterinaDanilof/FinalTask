@@ -1,6 +1,18 @@
 #pragma once
 #include <string>
+#include <exception>
+#include<memory>
+#include <vector>
 using namespace std;
+
+class LoginErr : public exception
+{
+	const char* what() const noexception override { return "ERROR! This login already exists"; }
+};
+class NameErr :public exception
+{
+	const char* what() const noexception override { return "ERROR! This name already exists"; }
+};
 
 class registry_chat
 {
@@ -9,6 +21,7 @@ private:
 	string password_;
 	string name_;
 
+	vector<registry_chat> users_;
 
 public:
 	registry_chat(const string& login, const string& password, const string& name): login_(login),password_(password), name_(name){}
@@ -20,6 +33,9 @@ public:
 
 	const string getUserName() const { return name_; }
 	void setUserName(const string& name) { name_ = name; }
+
+	
+	void reg_user();
 
 };
 
