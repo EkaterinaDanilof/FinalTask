@@ -25,7 +25,7 @@ void registry_chat::reg_user()
 
 	if (/*массив всех логинов*/) { throw LoginErr; }
 	if (/*name*/) { throw NameErr; }
-
+	if (lenght(password) < 8) { throw PassErr; }
 	registry_chat user = registry_chat(login, password, name);
 	users.push_back(user);
 }

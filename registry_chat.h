@@ -13,6 +13,10 @@ class NameErr :public exception
 {
 	const char* what() const noexception override { return "ERROR! This name already exists"; }
 };
+class PassErr :public exception
+{
+	const char* what() const noexception override { return "ERROR! Too short password"; }
+};
 
 class registry_chat
 {
